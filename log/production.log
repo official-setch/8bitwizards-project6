@@ -1,0 +1,37 @@
+I, [2022-04-07T09:52:26.153555 #3543]  INFO -- : [3893e1e9-77aa-4e88-b27a-306833c51e59] Started GET "/" for 127.0.0.1 at 2022-04-07 09:52:26 -0400
+I, [2022-04-07T09:52:26.168780 #3543]  INFO -- : [3893e1e9-77aa-4e88-b27a-306833c51e59] Processing by StaticPagesController#home as HTML
+I, [2022-04-07T09:52:26.186092 #3543]  INFO -- : [3893e1e9-77aa-4e88-b27a-306833c51e59]   Rendered static_pages/home.html.erb within layouts/application (Duration: 1.7ms | Allocations: 592)
+I, [2022-04-07T09:52:26.189503 #3543]  INFO -- : [3893e1e9-77aa-4e88-b27a-306833c51e59]   Rendered layout layouts/application.html.erb (Duration: 5.1ms | Allocations: 658)
+I, [2022-04-07T09:52:26.189958 #3543]  INFO -- : [3893e1e9-77aa-4e88-b27a-306833c51e59] Completed 500 Internal Server Error in 21ms (Allocations: 2439)
+F, [2022-04-07T09:52:26.196178 #3543] FATAL -- : [3893e1e9-77aa-4e88-b27a-306833c51e59]   
+[3893e1e9-77aa-4e88-b27a-306833c51e59] ActionView::Template::Error (The asset "rails.svg" is not present in the asset pipeline.
+):
+[3893e1e9-77aa-4e88-b27a-306833c51e59]     10:   <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+[3893e1e9-77aa-4e88-b27a-306833c51e59]     11: </div>
+[3893e1e9-77aa-4e88-b27a-306833c51e59]     12: 
+[3893e1e9-77aa-4e88-b27a-306833c51e59]     13: <%= link_to image_tag("rails.svg", alt: "Rails logo", width: "200"),
+[3893e1e9-77aa-4e88-b27a-306833c51e59]     14:                       "https://rubyonrails.org/" %>
+[3893e1e9-77aa-4e88-b27a-306833c51e59]   
+[3893e1e9-77aa-4e88-b27a-306833c51e59] app/views/static_pages/home.html.erb:13
+I, [2022-04-07T09:52:26.771061 #3543]  INFO -- : [a56bf663-7f6e-405d-bd63-e5d5dfd2a6ce] Started GET "/favicon.ico" for 127.0.0.1 at 2022-04-07 09:52:26 -0400
+F, [2022-04-07T09:52:26.771828 #3543] FATAL -- : [a56bf663-7f6e-405d-bd63-e5d5dfd2a6ce]   
+[a56bf663-7f6e-405d-bd63-e5d5dfd2a6ce] ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+[a56bf663-7f6e-405d-bd63-e5d5dfd2a6ce]   
+I, [2022-04-07T09:52:30.886713 #3543]  INFO -- : [2a76e984-7c60-4c37-a987-466c09eceed3] Started GET "/" for 127.0.0.1 at 2022-04-07 09:52:30 -0400
+I, [2022-04-07T09:52:30.887470 #3543]  INFO -- : [2a76e984-7c60-4c37-a987-466c09eceed3] Processing by StaticPagesController#home as HTML
+I, [2022-04-07T09:52:30.889090 #3543]  INFO -- : [2a76e984-7c60-4c37-a987-466c09eceed3]   Rendered static_pages/home.html.erb within layouts/application (Duration: 0.6ms | Allocations: 174)
+I, [2022-04-07T09:52:30.889615 #3543]  INFO -- : [2a76e984-7c60-4c37-a987-466c09eceed3]   Rendered layout layouts/application.html.erb (Duration: 0.9ms | Allocations: 203)
+I, [2022-04-07T09:52:30.889899 #3543]  INFO -- : [2a76e984-7c60-4c37-a987-466c09eceed3] Completed 500 Internal Server Error in 2ms (Allocations: 573)
+F, [2022-04-07T09:52:30.891280 #3543] FATAL -- : [2a76e984-7c60-4c37-a987-466c09eceed3]   
+[2a76e984-7c60-4c37-a987-466c09eceed3] ActionView::Template::Error (The asset "rails.svg" is not present in the asset pipeline.
+):
+[2a76e984-7c60-4c37-a987-466c09eceed3]     10:   <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+[2a76e984-7c60-4c37-a987-466c09eceed3]     11: </div>
+[2a76e984-7c60-4c37-a987-466c09eceed3]     12: 
+[2a76e984-7c60-4c37-a987-466c09eceed3]     13: <%= link_to image_tag("rails.svg", alt: "Rails logo", width: "200"),
+[2a76e984-7c60-4c37-a987-466c09eceed3]     14:                       "https://rubyonrails.org/" %>
+[2a76e984-7c60-4c37-a987-466c09eceed3]   
+[2a76e984-7c60-4c37-a987-466c09eceed3] app/views/static_pages/home.html.erb:13
+I, [2022-04-07T09:56:09.403103 #3980]  INFO -- : Migrating to CreateUsers (20220403004506)
+I, [2022-04-07T09:56:09.420154 #3980]  INFO -- : Migrating to AddIndexToUsersEmail (20220403190151)
+I, [2022-04-07T09:56:09.430902 #3980]  INFO -- : Migrating to AddPasswordDigestToUsers (20220403190947)
