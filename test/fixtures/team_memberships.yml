@@ -4,21 +4,8 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-#one: {}
+one: {}
 # column: value
 #
-#two: {}
+two: {}
 # column: value
-
-
-
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  grade: 
-  evals_complete: false
-
-two:
-  grade: 
-  evals_complete: false
-

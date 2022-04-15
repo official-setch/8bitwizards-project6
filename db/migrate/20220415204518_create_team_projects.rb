@@ -1,4 +1,5 @@
 class CreateTeamProjects < ActiveRecord::Migration[6.1]
+
   def change
     create_table :team_projects do |t|
       t.integer :grade
