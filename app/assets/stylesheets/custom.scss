@@ -67,7 +67,9 @@ p {
   line-height: 1.7em;
 }
 
-
+p.password_guidelines{
+  margin: 40px 0px 0px 290px
+}
 
 /* sidebar */
 
@@ -142,6 +144,11 @@ input {
     margin-left: 20px;
     font-weight: normal;
   }
+}
+
+input[type='checkbox'] {
+   width: 50px;
+   height: 100px;
 }
 
 #session_remember_me {
@@ -223,3 +230,5 @@ footer {
     }
   }
 }
+
+
