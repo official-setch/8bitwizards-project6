@@ -8,3 +8,7 @@
     </section>
   </aside>
 </div>
+
+<% if current_user.admin? %>
+<%= link_to "Add team members", teammates_path %>
+<% end %>

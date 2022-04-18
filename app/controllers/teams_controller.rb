@@ -50,7 +50,7 @@ class TeamsController < ApplicationController
   
   private
     def team_params
-
+	params.permit(:name)
     end
 
     

@@ -1,0 +1,11 @@
+<%= form_with(model: @teammate, local: true) do |f| %>
+
+  <% @users.each do |user| %>
+     <div class="collection-check-box">
+       <%= f.check_box :teammate %>
+       <%= user.name %>
+     </div>
+  <% end %>
+
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>
