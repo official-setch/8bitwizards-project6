@@ -1,0 +1,24 @@
+<% provide(:title, 'Surveys') %>
+<% provide(:button_text, 'Create a survey') %>
+<h1>All Surveys</h1>
+
+<ul class="users">
+<% @projects.each do |project| %>
+   <li>
+     <%= link_to project.name, project %>
+     
+     <% if current_user.admin? %> 
+     <td> | <%= link_to 'delete', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+     <% end %>
+     
+   </li>
+<% end %>
+</ul>
+
+<% if current_user.admin? %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= render 'form' %>
+  </div>
+</div>
+<% end %>
