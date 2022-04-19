@@ -11,5 +11,5 @@
 </div>
 
 <% if current_user.admin? %>
-<%= link_to "Add team members", teammates_path %>
+<%= link_to "Add team members", new_team_membership_path(team_id:@team.id) %>
 <% end %>

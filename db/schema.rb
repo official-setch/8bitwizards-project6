@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_16_194811) do
+ActiveRecord::Schema.define(version: 2022_04_19_054119) do
 
   create_table "admins", force: :cascade do |t|
     t.string "fname"
@@ -43,11 +43,12 @@ ActiveRecord::Schema.define(version: 2022_04_16_194811) do
 
   create_table "team_memberships", force: :cascade do |t|
     t.integer "team_id"
-    t.integer "student_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["student_id"], name: "index_team_memberships_on_student_id"
+    t.integer "user_id"
+    t.integer "user_id_id"
     t.index ["team_id"], name: "index_team_memberships_on_team_id"
+    t.index ["user_id_id"], name: "index_team_memberships_on_user_id_id"
   end
 
   create_table "team_projects", force: :cascade do |t|
@@ -83,4 +84,5 @@ ActiveRecord::Schema.define(version: 2022_04_16_194811) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "team_memberships", "users"
 end

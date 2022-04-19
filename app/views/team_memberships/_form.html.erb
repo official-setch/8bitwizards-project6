@@ -1,0 +1,10 @@
+<%= form_with(model: @team_membership, local: true) do |f| %>
+	<%j=Array.new %>
+  <% @users.each do |user| %>
+       <%j.append(user)%>
+  <% end %>
+  
+  <%= f.select :student_id, j.collect{|p| ["#{p.name}",p.id]} %>
+
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>
