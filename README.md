@@ -3,6 +3,9 @@
 #### JAY SHEN, SETH WALCZAK, RAJAT GUPTA, SIDDHARTH PATEL
 
 ##
+## Slides for the presentation
+https://docs.google.com/presentation/d/1Ejp-aRAdbCuF4_dMSRo1HN8C8F5YfS2q8P7Mx2qr5ik/edit#slide=id.g124f7ba60ed_0_0
+
 ## How to run
 
 1. Open a terminal
