@@ -1,7 +1,7 @@
 class TeamMembershipsController < ApplicationController
 
   def index
-    @users = Student.all
+    @users = User.all
     @teams = Team.all
     @team_memberships = TeamMembership.all
   end
@@ -19,18 +19,16 @@ class TeamMembershipsController < ApplicationController
   end
 
   def create
-    team_membership = {team_id: @@team_id, user_id_id: params[:team_membership][:student_id]}
-    p team_membership
+    team_membership = {team_id: @@team_id, user_id: params[:team_membership][:student_id]}
     @team_id = @@team_id
     
     @team_membership = TeamMembership.new(team_membership)
 
     if @team_membership.save then
       flash[:success] = "Teammates added successfully!"
-      redirect_to teams_url
+      redirect_to '/team_memberships/show'
     else
-      flash[:fail] = "Fucked up"
-      render 'new'
+      render 'new' 
     end
 
   end
@@ -48,14 +46,16 @@ class TeamMembershipsController < ApplicationController
 
   
   def destroy
-
+  	TeamMembership.find(params[:id]).destroy
+    flash[:success] = "Team Mate deleted"
+    redirect_to '/team_memberships/show'
   end
   
   
   private
 
     def team_membership_params
-      params.permit(:team_id, :student_id)
+      params.permit(:team_id, :user_id)
     end
     
 end

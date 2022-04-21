@@ -1,7 +1,10 @@
 <%= form_with(model: @team_membership, local: true) do |f| %>
 	<%j=Array.new %>
-  <% @users.each do |user| %>
-       <%j.append(user)%>
+	<%users=User.all%>
+  <% users.each do |user| %>
+  	<%if(TeamMembership.where(user_id:user.id).count()==0)%>
+       	<%j.append(user)%>
+       <%end%>
   <% end %>
   
   <%= f.select :student_id, j.collect{|p| ["#{p.name}",p.id]} %>

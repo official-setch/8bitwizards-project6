@@ -5,7 +5,7 @@
 <ul class="users">
 <% @teams.each do |team| %>
    <li>
-     <%= link_to team.name, team %>
+     <%= link_to team.name, '/team_memberships/show' %>
      
      <% if current_user.admin? %> 
      <td> | <%= link_to 'delete', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>

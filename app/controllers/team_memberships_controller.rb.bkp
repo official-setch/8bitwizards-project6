@@ -17,6 +17,7 @@ class TeamMembershipsController < ApplicationController
   end
 
   def create
+  	flash[:success] = "Teammates added successfully!"
     @team_membership = TeamMembership.new(team_membership_params)
     if params[:team_membership]== '1'
 	@team_membership = @user
