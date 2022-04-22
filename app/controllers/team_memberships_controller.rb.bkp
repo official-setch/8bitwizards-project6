@@ -26,7 +26,8 @@ class TeamMembershipsController < ApplicationController
       flash[:success] = "Teammates added successfully!"
       redirect_to teams_url
     else
-      render 'new'
+      flash[:success] = "Unsuccessful!"
+      redirect_to teams_url
     end
 
   end

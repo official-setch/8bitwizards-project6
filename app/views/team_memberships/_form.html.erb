@@ -8,6 +8,5 @@
   <% end %>
   
   <%= f.select :student_id, j.collect{|p| ["#{p.name}",p.id]} %>
-
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>
