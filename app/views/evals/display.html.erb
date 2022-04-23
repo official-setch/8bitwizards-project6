@@ -96,7 +96,7 @@
             <% count = Eval.where(project_id: project.id, rated_id: Eval.find_by(rated_id: student.id).rated_id).count()%>
             <%Eval.where(project_id: project.id, rated_id: Eval.find_by(rated_id: student.id).rated_id).each do |r| %>
                 <%
-                rating_collection += User.find_by(id: r.rating_id).name + " gave a rating of "+(r.avg).to_s+"\n"
+                rating_collection += "Anonymous gave a rating of "+(r.avg).to_s+"\n"
                 avgRating = avgRating + (r.avg).to_i
                 %>
               <%
