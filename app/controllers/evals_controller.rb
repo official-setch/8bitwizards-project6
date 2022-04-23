@@ -8,17 +8,19 @@ class EvalsController < ApplicationController
 	end
 	
 	def create
-		@ratings = Rating.new(eval_params)
-    if @ratings.save
-      redirect_to complete_path
+		@evals = Eval.new(eval_params)
+    if @evals.save
+    	redirect_to '/evals'
+      #redirect_to complete_path
+      #redirect_to root_path
       flash.alert = "Evaluation completed!"
     end
 	end
 	
 	def destroy
-		@ratings = Rating.find(params[:id])
-    @ratings.destroy
-    @ratings = Rating.all
+		@evals = Eval.find(params[:id])
+    @evals.destroy
+    @evals = Eval.all
     redirect_to complete_path
     flash.notice = "Evaluation deleted!"
   end

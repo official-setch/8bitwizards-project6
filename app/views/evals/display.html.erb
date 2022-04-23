@@ -9,13 +9,15 @@
 
 
 <!-- For each team, print team name and each task assigned to that team. Then iterate through each student rating and print the average and all comments -->
+
 <%Team.all.each do |t| %>
+
   <h2> <strong><%=t.name%></strong></h2>
   <% if((TeamMembership.where(team_id: t.id).count()) != nil) %>
     <% count = TeamMembership.where(team_id: t.id).count() %>
     <p> There are <%= count %> members in this team. </p>
   <% end %>
-  <%Survey.all.each do |survey| %>
+  <%Project.where(id: params[:id]).each do |project| %>
     <hr class = "dotted-red">
     <% if((TeamMembership.where(team_id: t.id).count()) != nil && (TeamMembership.where(team_id: t.id).count()) != 0) %>
       <h3><u><%=project.name%></u></h3>
@@ -31,8 +33,8 @@
               <th><strong>Comments</strong></th>
             </tr>
           <% if(Eval.find_by(rated_id: student.id)) %>
-            <% count = Eval.where(project_id: project.id, rated_id: Eval.find_by(rated_is: student.id).rated_id).count()%>
-            <%Rating.where(project_id: project.id, rated_id: Eval.find_by(rated_id: student.id).rated_id).each do |r| %>
+            <% count = Eval.where(project_id: project.id, rated_id: Eval.find_by(rated_id: student.id).rated_id).count()%>
+            <%Eval.where(project_id: project.id, rated_id: Eval.find_by(rated_id: student.id).rated_id).each do |r| %>
                 <%
                 rating_collection += User.find_by(id: r.rating_id).name + " gave a rating of "+(r.avg).to_s+"\n"
                 avgRating = avgRating + (r.avg).to_i
@@ -68,5 +70,8 @@
         %>
     <% end %>
   <% end %>
+  
   <hr class = "solid">
 <% end %>
+
+

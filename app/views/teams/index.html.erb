@@ -3,15 +3,27 @@
 <h1>All teams</h1>
 
 <ul class="users">
-<% @teams.each do |team| %>
+
+<% if current_user.admin? %>
+	<% @teams.each do |team| %>
    <li>
      <%= link_to team.name, "/teams/#{team.id}" %>
      
-     <% if current_user.admin? %> 
      <td> | <%= link_to 'delete', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-     <% end %>
      
-   </li>
+  	</li>
+	<% end %>
+<% else %>
+	
+	<% memberships=TeamMembership.where(user_id: current_user.id)%>
+	<% memberships.each do |m| %>
+			<% teamss = Team.where(id: m.team_id) %>
+			<% teamss.each do |team| %>
+				<li>
+				<%= link_to team.name, "/teams/#{team.id}" %>
+				</li>
+			<% end %>
+	<% end %>
 <% end %>
 </ul>
 

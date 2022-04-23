@@ -3,9 +3,14 @@
 <h1>All Surveys</h1>
 
 <ul class="users">
+
 <% @projects.each do |project| %>
    <li>
-     <%= link_to project.name, project %>
+   <% if not current_user.admin? %>
+     <%= link_to project.name, "/complete/#{project.id}" %>
+    <% else %>
+    	<%= link_to project.name, project %>
+    <% end %>
      
      <% if current_user.admin? %> 
      <td> | <%= link_to 'delete', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -22,3 +27,8 @@
   </div>
 </div>
 <% end %>
+
+
+
+
+	
