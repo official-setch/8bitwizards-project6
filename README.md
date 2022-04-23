@@ -24,7 +24,7 @@ This is a web application designed to allow for the giving and recieving of peer
 
 ## How to navigate
 
-On loading the web application, all users must either sign-in or sign-up. A sign-in for instructors is pre-determined. After signing in, you can use the navigation bar in the top right to view information. As a student, you can view the teams you are apart of and the evaluations that are available to you, to complete or to view. As an instructor, you can view all teams, all students, and the status of all evaluations.
+On loading the web application, all users must either sign-in or sign-up. A sign-in for instructors is pre-determined. After signing in, you can use the navigation bar in the top right to view information. As a student, you can view the teams you are apart of (only visible when you are in at least one team) and the evaluations that are available to you to complete or to view (only visible when there is at least one evaluation survey). As an instructor, you can view all teams, all students, and the status of all evaluations.
 
 
 ## Challenges faced in coding
@@ -40,7 +40,7 @@ Rajat Gupta: Models, migrations, add projects controller, evals controller, fix 
 Jay Shen: Views, styling, debugging all pages, add users controller with sign-in authentication, teams controller.
 
 
-All: debugging
+All: debugging, documentation
 
 
 ## Functionalities
