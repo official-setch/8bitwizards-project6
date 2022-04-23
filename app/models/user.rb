@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+	#Model for a user. All students AND instructors/admins are Users!
+	#Contains methods for log-ins and password encryption/verification
   has_many :team_memberships
   has_many :teams, through: :team_memberships
   attr_accessor :remember_token
