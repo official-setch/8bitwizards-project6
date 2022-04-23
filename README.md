@@ -10,9 +10,11 @@ https://docs.google.com/presentation/d/1Ejp-aRAdbCuF4_dMSRo1HN8C8F5YfS2q8P7Mx2qr
 
 1. Open a terminal
 2. cd into the 8bitwizards-project6 folder
-3. Enter `??`
-4. 
-5. 
+3. Enter `bundle install`
+4. Enter `rails db:schema:load`
+5. Enter `rails db:migrate`
+6. Enter `rails server`
+7. Open a web brower and enter the local host address on you computer to run the page
 
 This will ensure that you are in the right folder. 
 
