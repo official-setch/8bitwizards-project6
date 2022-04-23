@@ -1,27 +1,21 @@
 <% provide(:title, @team.name) %>
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-       <h1>
-         <%= @team.name %>
-         <% memberships=TeamMembership.where(team_id: @team.id)%>
-      		<br>
-      		<p></p>
-      		<% memberships.each do |m| %>
-      			<%User.where(id: m.user_id).each do |user| %>
-      				<%=user.name%>
-      				<% if current_user.admin? %>
-      					<td> | <%= link_to 'delete', m, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      				<% end %>
-      				<br>
-      			<%end%>
-      		<%end%>
-         
-      </h1>
-    </section>
-  </aside>
-</div>
+<h1><%= @team.name %></h1>
 
-<% if current_user.admin? %>
-<%= link_to "Add team members", new_team_membership_path(team_id:@team.id) %>
+<ul class="users">
+<% memberships=TeamMembership.where(team_id: @team.id)%>
+  <% memberships.each do |m| %>
+     <%User.where(id: m.user_id).each do |user| %>
+     <li>
+      	<%=user.name%>
+      	<% if current_user.admin? %>
+      	  <td> | <%= link_to 'delete', m, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      	<% end %>
+     </li>
+     <%end%>
+  <%end%>
+  
+  <% if current_user.admin? %>
+<br/><%= link_to "Add team members", new_team_membership_path(team_id:@team.id) %>
 <% end %>
+</ul>
+

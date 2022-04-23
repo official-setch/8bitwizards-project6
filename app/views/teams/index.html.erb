@@ -5,16 +5,13 @@
 <ul class="users">
 
 <% if current_user.admin? %>
-	<% @teams.each do |team| %>
+  <% @teams.each do |team| %>
    <li>
-     <%= link_to team.name, "/teams/#{team.id}" %>
-     
+     <%= link_to team.name, "/teams/#{team.id}" %>  
      <td> | <%= link_to 'delete', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-     
-  	</li>
-	<% end %>
-<% else %>
-	
+   </li>
+  <% end %>
+<% else %>	
 	<% memberships=TeamMembership.where(user_id: current_user.id)%>
 	<% memberships.each do |m| %>
 			<% teamss = Team.where(id: m.team_id) %>

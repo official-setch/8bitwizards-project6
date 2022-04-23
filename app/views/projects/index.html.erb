@@ -9,7 +9,7 @@
    <% if not current_user.admin? %>
      <%= link_to project.name, "/complete/#{project.id}" %>
     <% else %>
-    	<%= link_to project.name, project %>
+    	<%= link_to project.name, "/evals/display/#{project.id}" %>
     <% end %>
      
      <% if current_user.admin? %> 

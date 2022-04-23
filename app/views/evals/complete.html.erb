@@ -1,16 +1,19 @@
 <% provide(:title, "Complete Evaluations") %>
   <h1>Current Assigned Evaluations:</h1>
-  <p>----------------------------------------------------------------------------------</p>
+             <p>------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
 	
-	<% projectss = Project.where(id: params[:id]) %>
+  <% projectss = Project.where(id: params[:id]) %>
   <% projectss.all.each do |s| %>
-    <h2> <b><%=s.name %></h2>
+    <h3> <b><%=s.name %></h3>
       <% TeamMembership.where(team_id: TeamMembership.find_by(user_id: current_user.id).team_id).each do |y| %>
       <% x = User.find_by(id: y.user_id) %>
       <%# dont display if already submitted %>
-      <% if not Eval.where(project_id: s.id, rating_id: current_user.id, rated_id: x.id).any? %>
+      
+      <% if Eval.where(project_id: s.id, rating_id: current_user.id, rated_id: x.id).any? %>
+        <h4><%= x.name %>'s survey is done</h4>
+      <% else %>
         <%# in case an admin is assigned a group, it should not give them a rating %>
-          <h2><%= x.name %></h2>
+          <h4><%= x.name %></h4>
           <div class="row">
             <div class="col-md-6 col-md-offset-3">
               <%# access the rating controller to save the ratings by the user for each user %>
@@ -32,5 +35,6 @@
           </div>
         <% end %>
       <% end %>
-    <p>----------------------------------------------------------------------------------</p>
+      <br/><%= link_to "Results", "/evals/display/#{s.id}" %>
   <% end %>
+   <p>------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>

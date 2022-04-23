@@ -46,7 +46,7 @@ class TeamMembershipsController < ApplicationController
 
   
   def destroy
-  	TeamMembership.find(params[:id]).destroy
+    TeamMembership.find(params[:id]).destroy
     flash[:success] = "Team Mate deleted"
     redirect_to '/teams'
   end

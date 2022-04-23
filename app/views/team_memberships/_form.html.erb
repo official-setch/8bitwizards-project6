@@ -1,12 +1,18 @@
 <%= form_with(model: @team_membership, local: true) do |f| %>
-	<%j=Array.new %>
-	<%users=User.all%>
+  <%j=Array.new %>
+  <%users=User.all%>
   <% users.each do |user| %>
-  	<%if(TeamMembership.where(user_id:user.id).count()==0)%>
+  	<%if (TeamMembership.where(user_id:user.id).count()==0) && !user.admin? %>
        	<%j.append(user)%>
-       <%end%>
+       <% end %>
   <% end %>
   
-  <%= f.select :student_id, j.collect{|p| ["#{p.name}",p.id]} %>
-  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+  
+  <%= f.select :student_id, j.collect{|p| ["#{p.name}",p.id]}, class: "btn btn-primary" %>
+  
+  <% if !j.empty? %>
+    <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+  <% else %>
+    <h4>Currently no student can be added</h4>
+  <% end %>
 <% end %>

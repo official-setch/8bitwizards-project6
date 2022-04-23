@@ -22,7 +22,8 @@ class TeamsController < ApplicationController
       flash[:success] = "Team created successfully!"
       redirect_to @team
     else
-      render 'new'
+      flash[:success] = "Failed to create team"
+      redirect_to @team
     end
   end
   

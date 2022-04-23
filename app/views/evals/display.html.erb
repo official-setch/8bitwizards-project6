@@ -1,5 +1,7 @@
-<h1>Teams</h1>
-</br>
+<%Project.where(id: params[:id]).each do |project| %>
+  <h1>Results for <%=project.name%> </h1>
+<% end %>
+
 <%
   count = 0
   avgRating = 0.0
@@ -11,17 +13,13 @@
 <!-- For each team, print team name and each task assigned to that team. Then iterate through each student rating and print the average and all comments -->
 
 <%Team.all.each do |t| %>
-
-  <h2> <strong><%=t.name%></strong></h2>
+  <h3><br/> <strong><%=t.name%></strong></h3>
   <% if((TeamMembership.where(team_id: t.id).count()) != nil) %>
     <% count = TeamMembership.where(team_id: t.id).count() %>
     <p> There are <%= count %> members in this team. </p>
   <% end %>
   <%Project.where(id: params[:id]).each do |project| %>
     <hr class = "dotted-red">
-    <% if((TeamMembership.where(team_id: t.id).count()) != nil && (TeamMembership.where(team_id: t.id).count()) != 0) %>
-      <h3><u><%=project.name%></u></h3>
-    <%end%>
     <%TeamMembership.where(team_id: t.id).each do |m|%>
         <%User.where(id: m.user_id).each do |student|%>
          <% count = TeamMembership.where(team_id: t.id).count() %>
@@ -69,9 +67,10 @@
           count = 0
         %>
     <% end %>
-  <% end %>
-  
-  <hr class = "solid">
+  <% end %> 
 <% end %>
+
+
+
 
 
