@@ -1,8 +1,9 @@
 <% provide(:title, "Complete Evaluations") %>
   <h1>Current Assigned Evaluations:</h1>
   <p>----------------------------------------------------------------------------------</p>
-
-  <% Project.all.each do |s| %>
+	
+	<% projectss = Project.where(id: params[:id]) %>
+  <% projectss.all.each do |s| %>
     <h2> <b><%=s.name %></h2>
       <% TeamMembership.where(team_id: TeamMembership.find_by(user_id: current_user.id).team_id).each do |y| %>
       <% x = User.find_by(id: y.user_id) %>

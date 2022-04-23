@@ -1,0 +1,25 @@
+<% provide(:title, 'results') %>
+<h1>Results</h1>
+
+<ul class="users">
+
+
+<% Project.all.each do |project| %>
+		<% projectss = Eval.where(project_id: project.id) %>
+   <li>
+   	<% if projectss.count > 0 %>
+     <%= link_to project.name, "/evals/display/#{project.id}" %>
+     <%end%>
+    
+     
+   </li>
+<% end %>
+</ul>
+
+<% if current_user.admin? %>
+<% end %>
+
+
+
+
+	
