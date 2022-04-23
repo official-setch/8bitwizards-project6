@@ -4,6 +4,15 @@
     <section class="user_info">
        <h1>
          <%= @team.name %>
+         <% memberships=TeamMembership.where(team_id: @team.id)%>
+      		<br>
+      		<% memberships.each do |m| %>
+      			<%User.where(id: m.user_id).each do |user| %>
+      				<%=user.name%>
+      				<td> | <%= link_to 'delete', m, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      				<br>
+      			<%end%>
+      		<%end%>
          
       </h1>
     </section>

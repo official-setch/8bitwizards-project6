@@ -42,6 +42,9 @@ class TeamsController < ApplicationController
   end
   
   def destroy
+  	TeamMembership.where(team_id: params[:id]).each do |m|
+  		m.destroy
+  	end
     Team.find(params[:id]).destroy
     flash[:success] = "Team deleted"
     redirect_to teams_url

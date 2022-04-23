@@ -12,7 +12,7 @@ class TeamMembershipsController < ApplicationController
   end
 
   def new  
-    @@team_id = params[:team_id] unless defined? @@team_id
+    @@team_id = params[:team_id]
     @users = User.all
     @team_membership = TeamMembership.new
     @team_id = params[:team_id]
@@ -26,7 +26,7 @@ class TeamMembershipsController < ApplicationController
 
     if @team_membership.save then
       flash[:success] = "Teammates added successfully!"
-      redirect_to '/team_memberships/show'
+      redirect_to '/teams'
     else
       render 'new' 
     end
@@ -48,7 +48,7 @@ class TeamMembershipsController < ApplicationController
   def destroy
   	TeamMembership.find(params[:id]).destroy
     flash[:success] = "Team Mate deleted"
-    redirect_to '/team_memberships/show'
+    redirect_to '/teams'
   end
   
   
