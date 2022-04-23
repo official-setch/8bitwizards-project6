@@ -12,6 +12,7 @@
 
 <!-- For each team, print team name and each task assigned to that team. Then iterate through each student rating and print the average and all comments -->
 
+<% if current_user.admin? %>
 <%Team.all.each do |t| %>
   <h3><br/> <strong><%=t.name%></strong></h3>
   <% if((TeamMembership.where(team_id: t.id).count()) != nil) %>
@@ -69,7 +70,69 @@
     <% end %>
   <% end %> 
 <% end %>
-
+<%else%>
+<% memberships = TeamMembership.where(user_id: current_user.id) %>
+<% memberships.each do |m| %>
+<%teamss = Team.where(id: m.team_id) %>
+<%teamss.all.each do |t| %>
+  <h3><br/> <strong><%=t.name%></strong></h3>
+  <% if((TeamMembership.where(team_id: t.id).count()) != nil) %>
+    <% count = TeamMembership.where(team_id: t.id).count() %>
+    <p> There are <%= count %> members in this team. </p>
+  <% end %>
+  <%Project.where(id: params[:id]).each do |project| %>
+    <hr class = "dotted-red">
+    <%TeamMembership.where(team_id: t.id).each do |m|%>
+        <%User.where(id: m.user_id).each do |student|%>
+         <% count = TeamMembership.where(team_id: t.id).count() %>
+          <p><strong>Evaluated Student Name: </strong><%=student.name %></p>
+          <table>
+            <tr>
+              <th><strong>Individual Ratings</strong></th>
+              <th><strong>Average Rating</strong></th>
+              <th><strong>Comments</strong></th>
+            </tr>
+          <% if(Eval.find_by(rated_id: student.id)) %>
+            <% count = Eval.where(project_id: project.id, rated_id: Eval.find_by(rated_id: student.id).rated_id).count()%>
+            <%Eval.where(project_id: project.id, rated_id: Eval.find_by(rated_id: student.id).rated_id).each do |r| %>
+                <%
+                rating_collection += User.find_by(id: r.rating_id).name + " gave a rating of "+(r.avg).to_s+"\n"
+                avgRating = avgRating + (r.avg).to_i
+                %>
+              <%
+                comments += r.comment
+                comments += "\n"
+              %>
+            <% end %>
+            <% if(count > 0) %>
+              <% avgRating = avgRating / (count ) %>
+            <% end %>
+            <!-- Print the average rating of the student and the comments -->
+            <tr>
+              <td><%= simple_format rating_collection %></td>
+              <td><%= avgRating %></td>
+              <td><%= simple_format comments %></td>
+            </tr>
+            
+          <%else%>
+          <p>No Ratings Yet</p>
+          
+          <% end %>
+          
+      <% end %>
+      </table>
+      <hr class = "dotted"> 
+      <%
+          rating_collection = ""
+          avgRating = 0.0
+          comments = ""
+          count = 0
+        %>
+    <% end %>
+  <% end %> 
+<% end %>
+<% end %>
+<% end %>
 
 
 
