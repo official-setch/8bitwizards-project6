@@ -16,7 +16,6 @@ https://docs.google.com/presentation/d/1Ejp-aRAdbCuF4_dMSRo1HN8C8F5YfS2q8P7Mx2qr
 6. Enter `rails server`
 7. Open a web brower and enter the local host address on you computer to run the page
 
-This will ensure that you are in the right folder. 
 
 ## Project details and Design
 
