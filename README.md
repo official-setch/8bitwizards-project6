@@ -19,7 +19,7 @@ https://docs.google.com/presentation/d/1Ejp-aRAdbCuF4_dMSRo1HN8C8F5YfS2q8P7Mx2qr
 
 ## Project details and Design
 
-This is a web application designed to allow for the giving and recieving of peer evaluations in a team environment. For each survey a team has assigned to them, each member can give feedback  to each of their teammembers. This appication also allows for instructors to administer these evaluations--instructors can create/remove teams and students, as well as assign surveys to teams.
+This is a web application designed to allow for the giving and recieving of peer evaluations in a team environment. For each survey a team has assigned to them, each member can give feedback to each of their teammembers. This appication also allows for instructors to administer these evaluations--instructors can create/remove teams and students, as well as assign surveys to teams.
 
 
 ## How to navigate
@@ -37,7 +37,7 @@ The main challenge we faced was implementing controllers, specifically controlle
 Siddharth Patel: Views\
 Seth Walczak: Models and migrations\
 Rajat Gupta: Models, migrations, add projects controller, evals controller, fix add-teammates issue in team_memberships controller, made the survey, made the results.\
-Jay Shen: Views, styling, debugging all pages, add users controller with sign-in authentication, teams controller.
+Jay Shen: Views, styling, debugging all pages, add useful features from tutorial (chapter 7-10), add users controller with sign-in authentication, teams controller.
 
 
 All: debugging, documentation
@@ -45,7 +45,8 @@ All: debugging, documentation
 
 ## Functionalities
 
-1. Database support for multiple teams per person (maximum of 2)
-2. Sign-in authentication for both instructors and students
-3. Instructor specific views and functionalities
+1. Sign-in authentication for both instructors and students
+2. Instructor specific views and functionalities, including viewing and editing teams, teammates and project surveys.
+3. Students can be able to submit scores and comments for all their teammates (and only their teammates).
+
 
