@@ -22,6 +22,7 @@ class ActiveSupport::TestCase
   end
 end
 
+#the actionDispatch class with integration test
 class ActionDispatch::IntegrationTest
 
   # Log in as a particular user.

@@ -1,6 +1,7 @@
 <% provide(:title, @team.name) %>
 <h1><%= @team.name %></h1>
 
+<!-- list all team members in this team-->
 <ul class="users">
 <%# find memberships with team id %>
 <% memberships=TeamMembership.where(team_id: @team.id)%>
@@ -16,8 +17,9 @@
      <%end%>
   <%end%>
   
-  <%# give admin an option to add team members to the team %>
-  <% if current_user.admin? %>
+<!-- add "Add team members" link so that admin can be able to add team members-->
+<% if current_user.admin? %>
+
 <br/><%= link_to "Add team members", new_team_membership_path(team_id:@team.id) %>
 <% end %>
 </ul>
