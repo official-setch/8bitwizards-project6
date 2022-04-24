@@ -5,12 +5,15 @@
 <ul class="users">
 
 <% if current_user.admin? %>
+<%# loop through all teams to list all team names%>
   <% @teams.each do |team| %>
    <li>
      <%= link_to team.name, "/teams/#{team.id}" %>  
      <td> | <%= link_to 'delete', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
    </li>
   <% end %>
+  
+  <%# only list the teams that the user is part of%>
 <% else %>	
 	<% memberships=TeamMembership.where(user_id: current_user.id)%>
 	<% memberships.each do |m| %>
@@ -24,6 +27,7 @@
 <% end %>
 </ul>
 
+<%# if user is admin give an option to add team %>
 <% if current_user.admin? %>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">

@@ -2,14 +2,18 @@
   <aside class="col-md-4">
     <section class="user_info">
        <h3>
+       <%# go through all the teams %>
        <%Team.all.each do |t| %>
        		<h1>
       			<%=t.name%>
       		</h1>
       		<br>
+      		<%# find meamberships of that team %>
       		<% memberships=TeamMembership.where(team_id: t.id)%>
       		<br>
+      		<%# loop over memberships %>
       		<% memberships.each do |m| %>
+      			<%# when user id matches user id in membership, print user name %>
       			<%User.where(id: m.user_id).each do |user| %>
       				<%=user.name%>
       				<% if current_user.admin? %>

@@ -12,19 +12,27 @@
 
 <!-- For each team, print team name and each task assigned to that team. Then iterate through each student rating and print the average and all comments -->
 
+<%# if user is admin %>
 <% if current_user.admin? %>
+
+<%# loop through all the teams to print results %>
 <%Team.all.each do |t| %>
   <h3><br/> <strong><%=t.name%></strong></h3>
   <% if((TeamMembership.where(team_id: t.id).count()) != nil) %>
     <% count = TeamMembership.where(team_id: t.id).count() %>
+    <%# display number of members in the team %>
     <p> There are <%= count %> members in this team. </p>
   <% end %>
+  <%# only show the project that you click on %>
   <%Project.where(id: params[:id]).each do |project| %>
     <hr class = "dotted-red">
+    <%# show all the teams in that project %>
     <%TeamMembership.where(team_id: t.id).each do |m|%>
+    		<%# show all the users in that team %>
         <%User.where(id: m.user_id).each do |student|%>
          <% count = TeamMembership.where(team_id: t.id).count() %>
           <p><strong>Evaluated Student Name: </strong><%=student.name %></p>
+          <%# make a table for the ratings%>
           <table>
             <tr>
               <th><strong>Individual Ratings</strong></th>
@@ -70,6 +78,8 @@
     <% end %>
   <% end %> 
 <% end %>
+
+<%# if the user is not admin then only show the results of the team, that user is part of %>
 <%else%>
 <% memberships = TeamMembership.where(user_id: current_user.id) %>
 <% memberships.each do |m| %>

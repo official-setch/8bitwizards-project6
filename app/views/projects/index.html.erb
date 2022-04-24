@@ -4,14 +4,19 @@
 
 <ul class="users">
 
+<%# loop over the list of projects %>
 <% @projects.each do |project| %>
    <li>
+   <%# if user is not admin %>
    <% if not current_user.admin? %>
+   
+   <%# list the names of the projects %>
      <%= link_to project.name, "/complete/#{project.id}" %>
     <% else %>
     	<%= link_to project.name, "/evals/display/#{project.id}" %>
     <% end %>
      
+     <%# admin can delete projects %>
      <% if current_user.admin? %> 
      <td> | <%= link_to 'delete', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
      <% end %>
@@ -20,6 +25,7 @@
 <% end %>
 </ul>
 
+<%# give admin the ability to add projects%>
 <% if current_user.admin? %>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">

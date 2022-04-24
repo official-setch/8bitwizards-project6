@@ -1,7 +1,9 @@
 <%= form_with(model: @team_membership, local: true) do |f| %>
+	<%# create an array to hold the users currently in a team %>
   <%j=Array.new %>
   <%users=User.all%>
   <% users.each do |user| %>
+  <%# if user id in membership matches the user id in loop, the add to array %>
   	<%if (TeamMembership.where(user_id:user.id).count()==0) && !user.admin? %>
        	<%j.append(user)%>
        <% end %>
@@ -10,6 +12,7 @@
   
   <%= f.select :student_id, j.collect{|p| ["#{p.name}",p.id]}, class: "btn btn-primary" %>
   
+  <%# if array is not empty then show users to add %>
   <% if !j.empty? %>
     <%= f.submit yield(:button_text), class: "btn btn-primary" %>
   <% else %>
