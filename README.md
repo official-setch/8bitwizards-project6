@@ -34,7 +34,7 @@ The main challenge we faced was implementing controllers, specifically controlle
 
 ## Responsibilities
 
-Siddharth Patel: Views\
+Siddharth Patel: Views, Testing, teams/team_memberships controller\
 Seth Walczak: Models and migrations\
 Rajat Gupta: Models, migrations, add projects controller, evals controller, fix add-teammates issue in team_memberships controller, made the survey, made the results.\
 Jay Shen: Views, styling, debugging all pages, add useful features from tutorial (chapter 7-10), add users controller with sign-in authentication, teams controller.
